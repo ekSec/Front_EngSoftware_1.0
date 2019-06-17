@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css'
-import Home from '../Login'
-import Ctt from '../Ctt'
+import Gerenciador from '../Gerenciador'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { CssBaseline, CircularProgress } from '@material-ui/core'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import firebase from '../firebase'
+import Recurso from '../Gerenciador/Recurso';
 const theme = createMuiTheme({
 	typography: {
 	  useNextVariants: true,
@@ -23,14 +23,10 @@ export default function App() {
 		})
 	})
 	return firebaseInitialized !== false ? (
-		<MuiThemeProvider theme={theme}>
-			<CssBaseline />
 			<Router>
-			<Switch>
-			<Route exact path="/" component={Home} />
-			<Route path="/dashboard" component={Ctt}/>
-			</Switch>
+			<div>
+			<Route path="/" component={Gerenciador}/>
+			</div>
 			</Router>
-		</MuiThemeProvider>
 	) : <div id="loader"><CircularProgress /></div>
 }
